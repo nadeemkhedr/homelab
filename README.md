@@ -1,6 +1,31 @@
-# Homelab
+# Home-lab
 
-## Generate age key to use in our cluster
+## Commands
+
+```bash
+# force flux reconcile instead of waiting for flux to pick up the github changes
+flux reconcile kustomization apps
+
+```
+
+## Secrets
+
+We are using SOPS to push encrypted secrets as part of our code.
+A better approach is to use a vault like AWS secret manager or
+Github secrets
+
+### SOPS (Recommended)
+
+To encrypt a k8s secret you can do the following:
+
+```bash
+export AGE_PUBLIC={public_age_key}
+sops --age=$AGE_PUBLIC --encrypt --encrypted-regex '^(data|stringData)$' --in-place test-secret.yaml
+```
+
+The result `yaml` can be pushed to Github
+
+#### Install and enable SOPS (first time)
 
 The first step is manual and have to be done when creating a new cluster
 
@@ -36,12 +61,13 @@ decryption:
 
 ```
 
-Alternative: if you don't want to using encryption for keys, you can run the create secret command manually
+### Cloudflare linkding tunnel (Not recommended/manual)
 
-### Cloudflare linkding tunnel
+Alternative: if you don't want to using encryption for keys
+you can run the create secret command manually
 
 ```bash
-cloudflared tunnel create ld # creates the tunnel in cloudflare
+cloudflared tunnel create ld # creates the tunnel in Cloudflare
 cd ~/.cloudflared
 k create secret generic tunnel-credentials --from-file=credentials.json={GUID}.json
 ```
