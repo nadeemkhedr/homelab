@@ -1,11 +1,14 @@
 # Home-lab
 
-## Commands
+My local Kubernetes cluster running on my Raspberry-pi.
+The goal of this project to experiment with Kubernetes locally
+and manage my own Kubernetes cluster.
+
+## Frequent commands
 
 ```bash
 # force flux reconcile instead of waiting for flux to pick up the github changes
 flux reconcile kustomization apps
-
 ```
 
 ## Secrets
