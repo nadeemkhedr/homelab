@@ -64,7 +64,7 @@ decryption:
 
 ```
 
-### Cloudflare linkding tunnel (Not recommended/manual)
+### Manually create secrets using CLI (Not recommended/manual)
 
 Alternative: if you don't want to using encryption for keys
 you can run the create secret command manually
