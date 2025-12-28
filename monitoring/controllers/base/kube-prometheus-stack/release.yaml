@@ -28,3 +28,17 @@ spec:
   values:
     grafana:
       adminPassword: water
+      ingress:
+        enabled: true
+
+        ingressClassName: traefik
+        hosts:
+          - grafana.nadeemkhedr.com
+
+        ## TLS configuration for grafana Ingress
+        ## Secret must be manually created in the namespace
+        ##
+        tls: []
+        # - secretName: grafana-general-tls
+        #   hosts:
+        #   - grafana.example.com
