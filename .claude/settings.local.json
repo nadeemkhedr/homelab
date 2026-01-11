@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(git -C /Users/nadeem/work/homelab log --oneline)",
+      "Bash(git -C /Users/nadeem/work/homelab remote:*)"
+    ]
+  }
+}
